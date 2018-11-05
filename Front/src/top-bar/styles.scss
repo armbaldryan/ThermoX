@@ -1,0 +1,30 @@
+.top-bar-navigation {
+  flex-grow: 1;
+  .menu-toolbar {
+    min-height: 64px;
+    align-items: center;
+  }
+  .menu-button {
+    margin-left: -12px;
+    margin-right: 20px;
+  }
+  .grow {
+    flex-grow: 1;
+  }
+  .menu-items {
+    min-height: 64px;
+    h6 {
+      padding-right: 40px;
+      align-self: center;
+      height: 100%;
+      a {
+        height: 64px;
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+}
+.drop-down-menu {
+  top: 40px;
+}
