@@ -54,17 +54,25 @@ export default class TopBar extends React.Component {
                         <div className="menu-items aCenter flex">
                             <Menu
                                 anchorOrigin={{
+                                    vertical: 'bottom',
                                     horizontal: 'left',
-                                    vertical: 'top',
                                 }}
+                                getContentAnchorEl={null}
                                 className="drop-down-menu"
                                 id="simple-menu"
                                 anchorEl={catalogueAnchorEl}
                                 open={!!catalogueAnchorEl}
                                 onClose={this.handleClose}
                             >
-                                <MenuItem onClick={this.handleClose}>ThermoX</MenuItem>
-                                <MenuItem onClick={this.handleClose}>Арктика</MenuItem>
+                                <MenuItem>
+                                    <Link to="/catalogue/thermox">ThermoX</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/catalogue/arktika">Арктика</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/catalogue">Все Термосы</Link>
+                                </MenuItem>
                             </Menu>
                             <Typography
                                 variant="h6"

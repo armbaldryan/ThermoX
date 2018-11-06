@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './home';
 import Catalogue from './catalogue';
 import TopBar from './top-bar';
-
 import "./styles.scss";
 
 export default class App extends PureComponent{
