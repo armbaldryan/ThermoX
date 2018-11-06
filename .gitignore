@@ -1,5 +1,6 @@
 # dependencies
 node_modules/
+package-lock.json
 
 # file: ~.gitignore_global
 .DS_STORE
