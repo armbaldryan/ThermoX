@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require('../../libs/mongoose.js');
 
 const { Schema } = mongoose;
 
 const Product = new Schema({
-    category: {
+    categoryID: {
         type: String,
         required: true,
     },
@@ -37,4 +37,22 @@ const Product = new Schema({
         required: true,
     }
 });
+
 exports.product = mongoose.model('product', Product);
+
+//
+// const a = [
+//     {
+//         size: Number,
+//         price: 499,
+//         colors: [
+//             {
+//                 name: '#ffffff',
+//                 images: [
+//                     'url',
+//                     'url',
+//                 ]
+//             }
+//         ],
+//     }
+// ]

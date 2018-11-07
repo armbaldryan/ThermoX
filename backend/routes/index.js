@@ -1,3 +1,3 @@
-// module.exports = function(app) {
-//     app.post('/catalogue:id', require('./product').post);
-// };
+module.exports = function(app) {
+    app.get('/catalogue', require('./product').get);
+};

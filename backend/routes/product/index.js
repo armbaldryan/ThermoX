@@ -1,9 +1,11 @@
-const Product = require('/backend/models/product').product;
+const Product = require('../../models/product').product;
 
-// exports.post = (req, res) => {
-//     Product.save()
-//         .then((doc) => {
-//             res.send(doc);
-//         })
-//         .catch((err) => res.status(400).send(err))
-// };
+exports.get = (req, res) => {
+    Product.find({})
+        .then((data) => {
+            console.log('data :::', data);
+            res.status(200)
+                res.json(data);
+        })
+        .catch((err) => res.status(400).send(err))
+};
