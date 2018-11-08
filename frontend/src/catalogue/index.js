@@ -3,10 +3,7 @@ import React, { PureComponent } from 'react';
 export default class Catalogue extends PureComponent{
     
     componentDidMount() {
-        fetch('http://localhost:3000/catalogue', {
-            headers: {
-            "Content-Type": "application/json"
-        }})
+        fetch('/api/catalogue')
             .then((response) => {
                 return response.json();
             })

@@ -25,8 +25,14 @@ module.exports = {
         publicPath: '/',
         filename: 'bundle.js'
     },
-    // devServer: {
-    //     contentBase: './dist',
-    //     historyApiFallback: true
-    // }
+    devServer: {
+        contentBase: './dist',
+        historyApiFallback: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000/',
+                pathRewrite: { '^/api': '' },
+            }
+        },
+    },
 };
