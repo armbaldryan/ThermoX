@@ -12,7 +12,7 @@ router.get('/:id', (req, res) => {
 router.get('/', (req, res) => {
     Product.find({})
         .then((data) => {
-            console.log('data -> ', data);
+            console.log('data -> ', 'request - ');
             res.status(200).json(data);
         })
         .catch((err) => res.status(400).send(err))

@@ -1,17 +1,22 @@
 import React, { PureComponent } from 'react';
+import { connect } from "react-redux";
+import { fetchProducts } from '../actions/products';
 
-export default class Catalogue extends PureComponent{
+const mapStateToProps = (state) => ({
+    products: state.products,
+});
+
+const mapDispatchToProps = {
+    fetchProducts
+};
+class Catalogue extends PureComponent{
     
     componentDidMount() {
-        fetch('/api/catalogue')
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => console.log('data :::', data))
-            .catch( (err) => console.log('err :::', err))
+        this.props.fetchProducts();
     }
 
     render() {
+        console.log('this.props :::', this.props);
         return (
             <main>
                 Hello from Catalogue
@@ -19,3 +24,4 @@ export default class Catalogue extends PureComponent{
         );
     }
 }
+export default connect(mapStateToProps, mapDispatchToProps)(Catalogue);
