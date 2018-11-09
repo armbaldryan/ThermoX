@@ -1,0 +1,13 @@
+.catalogue-card-box {
+  margin-bottom: 20px;
+  .card-header {
+    height: 200px;
+    .card-image {
+      height: 200px;
+      border-radius: 0;
+      img {
+        height: 200px;
+      }
+    }
+  }
+}

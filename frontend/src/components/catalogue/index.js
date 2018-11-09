@@ -3,12 +3,10 @@ import { connect } from "react-redux";
 import { fetchProducts } from '../../actions/products/index';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { needsToFetch } from '../../helpers';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
+import SingleProduct from '../list-items/product';
+import './styles.scss';
+
+import Grid from '@material-ui/core/Grid';
 
 const mapStateToProps = (state) => ({
     products: state.products,
@@ -23,32 +21,22 @@ class Catalogue extends PureComponent{
         this.props.fetchProducts();
     }
 
+    generateCatalogueProducts = (products) => products.map((product) => <SingleProduct
+        key={product._id}
+        product={product}
+    />);
+
     render() {
         return (
-            <main>
+            <main className="container">
                 {
                     needsToFetch(this.props.products)
                         ? <CircularProgress color="secondary"/>
-                        :       <Card>
-                            <CardHeader
-                                avatar={
-                                    <Avatar aria-label="Recipe">
-                                        R
-                                    </Avatar>
-                                }
-                                title="Shrimp and Chorizo Paella"
-                                subheader="September 14, 2016"
-                            />
-                            <CardMedia
-                                title="Paella dish"
-                            />
-                            <CardContent>
-                                <Typography component="p">
-                                    This impressive paella is a perfect party dish and a fun meal to cook together with your
-                                    guests. Add 1 cup of frozen peas along with the mussels, if you like.
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                        : <Grid container spacing={24}>
+                            {
+                                this.generateCatalogueProducts(this.props.products.payload)
+                            }
+                        </Grid>
                 }
             </main>
         );

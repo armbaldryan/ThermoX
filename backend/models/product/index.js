@@ -14,45 +14,30 @@ const Product = new Schema({
     serialNumber: {
         type: Number,
     },
-    property: {
-        color: {
-            type: String,
-            required: true,
-        },
-        size: {
-            type: Number,
-            required: true,
-        },
-        price: {
-            type: Number,
-            required: true,
-        },
-        image: {
-            type: Array,
-            required: true,
-        }
-    },
     description: {
         type: String,
         required: true,
-    }
+    },
+    features: [{
+        size: {
+            type: Number,
+            required: true
+        },
+        properties: [{
+            price: {
+                type: Number,
+                required: true,
+            },
+            image: {
+                type: String,
+                required: true,
+            },
+            color: {
+                type: String,
+                required: true,
+            }
+        }]
+    }],
 });
 
 exports.product = mongoose.model('product', Product);
-
-//
-// const a = [
-//     {
-//         size: Number,
-//         price: 499,
-//         colors: [
-//             {
-//                 name: '#ffffff',
-//                 images: [
-//                     'url',
-//                     'url',
-//                 ]
-//             }
-//         ],
-//     }
-// ]

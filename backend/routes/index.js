@@ -1,3 +1,3 @@
 module.exports = function(app) {
-    app.use('/catalogue', require('./product'));
+    app.use('/catalogue', require('./catalogue'));
 };
