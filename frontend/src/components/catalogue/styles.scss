@@ -1,3 +1,13 @@
 .container {
   padding: 20px;
 }
+.bread-crumbs {
+    border-bottom: 3px solid #2196f3;
+    margin: 0;
+    padding: 20px 30px;
+    font-size: 18.7px;
+    text-transform: uppercase;
+    p {
+      color: #2196f3;
+    }
+}

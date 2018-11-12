@@ -3,6 +3,15 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(pdf|jpg|png|gif|svg|ico)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: { useRelativePath: 'true' }
+                    },
+                ]
+            },
+            {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']

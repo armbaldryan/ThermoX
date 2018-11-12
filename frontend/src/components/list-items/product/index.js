@@ -1,17 +1,54 @@
 import React, { PureComponent } from 'react';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-
+import classNames from 'classnames';
 import './styles.scss';
 export default class SingleProduct extends PureComponent{
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            property: props.product.features[0].properties[0],
+            size: props.product.features[0],
+        }
+    }
+    
+    getSizes = (features, selectedFeature) => features.map((feature) => <div
+        key={feature._id}
+        className={classNames('circle', {
+            'selected': feature._id === selectedFeature._id,
+        })}
+        onClick={() => this.clickSizeHandler(feature)}
+    >
+        {feature.size}
+    </div> );
+
+    getColors = (properties, selectedProperty) => properties.map((property) => <div
+        key={property._id}
+        style={{ backgroundColor: property.color}}
+        className={classNames('square', {
+          'selected': selectedProperty._id === property._id,
+        })}
+        onClick={() => this.clickColorHandler(property)}
+    /> );
+
+    clickSizeHandler = (size) => {
+        this.setState({
+            size,
+            property: size.properties[0],
+        })
+    };
+
+    clickColorHandler = (property) => {
+        this.setState({
+            property,
+        })
+    };
+
     render() {
-        console.log('this.props :::', this.props);
+        console.log('this.state :::', this.state);
         return (
             <Grid
                 item
@@ -19,29 +56,28 @@ export default class SingleProduct extends PureComponent{
                 xs={12}
             >
                 <div className="catalogue-card-box">
-                    <Card>
-                        <CardHeader
-                            className="card-header"
-                            avatar={
-                                <Avatar
-                                    aria-label="Recipe"
-                                    src={this.props.product.features[0].properties[0].image}
-                                    className="card-image"
-                                />
-                            }
+                    <Grid className="container justify-xs-center">
+                        <Avatar
+                            aria-label="Recipe"
+                            image={this.state.property.mainImage}
+                            src={this.state.property.mainImage}
+                            className="card-image"
                         />
-                        <Typography component="p">
-                            {this.props.product.title}
-                        </Typography>
-                        <CardMedia
-                            title="Paella dish"
-                        />
-                        <CardContent>
-                            <Typography component="p">
-                                {this.props.product.description}
-                            </Typography>
-                        </CardContent>
-                    </Card>
+                    </Grid>
+                    <Typography className="card-title">
+                        {this.props.product.title}
+                    </Typography>
+                    <Typography className="card-serial-number">
+                        {`Серия ${this.props.product.serialNumber}`}
+                    </Typography>
+                    <CardContent>
+                        <div className="product-sizes flex jCenter">
+                            {this.getSizes(this.props.product.features, this.state.size)}
+                        </div>
+                        <div className="product-colors flex jCenter">
+                            {this.getColors(this.state.size.properties, this.state.property)}
+                        </div>
+                    </CardContent>
                 </div>
             </Grid>
         );

@@ -11,8 +11,12 @@ import Menu from '@material-ui/core/Menu';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import isMobile from 'is-mobile';
 import common from '@material-ui/core/colors/common';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import Collapse from '@material-ui/core/Collapse';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
+import { NavLink } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -20,22 +24,49 @@ export default class TopBar extends React.Component {
     state = {
         auth: true,
         anchorEl: null,
+        isSubMenuOpen: false,
     };
+
+    menuList = (<List disablePadding id='list-menu' style={{backgroundColor: 'rgba(0,0,0, .7)'}}>
+        <ListItem button>
+            <ListItemText  primary={<NavLink to="/catalogue/thermox">ThermoX</NavLink>} />
+        </ListItem>
+        <ListItem button>
+            <ListItemText primary={<NavLink to="/catalogue/arktika">Арктика</NavLink>} />
+        </ListItem>
+        <ListItem button>
+            <ListItemText primary={<NavLink to="/catalogue">Все Термосы</NavLink>} />
+        </ListItem>
+    </List>);
 
     handleMenu = event => {
         this.setState({ anchorEl: event.currentTarget });
     };
 
     handleClick = event => {
-        this.setState({ catalogueAnchorEl: event.currentTarget });
+        this.setState({ 
+            catalogueAnchorEl: event.currentTarget, 
+        });
     };
 
     handleClose = () => {
         this.setState({ anchorEl: null, catalogueAnchorEl: null });
     };
 
+    enterMenu = () => {
+        this.setState({ isSubMenuOpen: true });
+    };
+
+    leaveMenu = (event) => {
+        console.log('event.rela :::', event.relatedTarget);
+        if (event.relatedTarget === null || !event.relatedTarget.closest('menu-catalogue')) {
+            this.setState({ isSubMenuOpen: false });
+        }
+    };
+
     render() {
         const { auth, anchorEl, catalogueAnchorEl } = this.state;
+        console.log('this.state :::', this.state);
         const open = Boolean(anchorEl);
         const isMobileFunc = isMobile();
         return (
@@ -52,43 +83,27 @@ export default class TopBar extends React.Component {
                                 : null
                             }
                         <div className="menu-items aCenter flex">
-                            <Menu
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'left',
-                                }}
-                                getContentAnchorEl={null}
-                                className="drop-down-menu"
-                                id="simple-menu"
-                                anchorEl={catalogueAnchorEl}
-                                open={!!catalogueAnchorEl}
-                                onClose={this.handleClose}
-                            >
-                                <MenuItem>
-                                    <Link to="/catalogue/thermox">ThermoX</Link>
-                                </MenuItem>
-                                <MenuItem>
-                                    <Link to="/catalogue/arktika">Арктика</Link>
-                                </MenuItem>
-                                <MenuItem>
-                                    <Link to="/catalogue">Все Термосы</Link>
-                                </MenuItem>
-                            </Menu>
+
                             <Typography
                                 variant="h6"
                                 color="inherit"
-                                onClick={this.handleClick}
+                                id='menu-catalogue'
+                                onMouseEnter={this.enterMenu}
+                                onMouseLeave={this.leaveMenu}
                             >
-                                <Link to="/catalogue">Каталог</Link>
+                                <NavLink to="/catalogue">Каталог</NavLink>
+                                <Collapse in={this.state.isSubMenuOpen}>
+                                    {this.menuList}
+                                </Collapse>
                             </Typography>
                             <Typography variant="h6" color="inherit" className="">
-                                <Link to="/">Информация</Link>
+                                <NavLink to="/">Информация</NavLink>
                             </Typography>
                             <Typography variant="h6" color="inherit" className="">
-                                <Link to="/">Контакты</Link>
+                                <NavLink to="/">Контакты</NavLink>
                             </Typography>
                             <Typography variant="h6" color="inherit" className="">
-                                <Link to="/">Блог</Link>
+                                <NavLink to="/">Блог</NavLink>
                             </Typography>
                         </div>
                         {auth && (
@@ -138,3 +153,27 @@ export default class TopBar extends React.Component {
 
 TopBar.propTypes = {
 };
+
+
+{/*<Menu*/}
+    {/*anchorOrigin={{*/}
+        {/*vertical: 'bottom',*/}
+        {/*horizontal: 'left',*/}
+    {/*}}*/}
+    {/*getContentAnchorEl={null}*/}
+    {/*className="drop-down-menu"*/}
+    {/*id="simple-menu"*/}
+    {/*anchorEl={catalogueAnchorEl}*/}
+    {/*open={!!catalogueAnchorEl}*/}
+    {/*onClose={this.handleClose}*/}
+{/*>*/}
+    {/*<MenuItem>*/}
+        {/*<NavLink to="/catalogue/thermox">ThermoX</NavLink>*/}
+    {/*</MenuItem>*/}
+    {/*<MenuItem>*/}
+        {/*<NavLink to="/catalogue/arktika">Арктика</NavLink>*/}
+    {/*</MenuItem>*/}
+    {/*<MenuItem>*/}
+        {/*<NavLink exact to="/catalogue">Все Термосы</NavLink>*/}
+    {/*</MenuItem>*/}
+{/*</Menu>*/}

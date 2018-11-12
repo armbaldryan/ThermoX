@@ -5,6 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { needsToFetch } from '../../helpers';
 import SingleProduct from '../list-items/product';
 import './styles.scss';
+import Typography from '@material-ui/core/Typography';
 
 import Grid from '@material-ui/core/Grid';
 
@@ -28,17 +29,24 @@ class Catalogue extends PureComponent{
 
     render() {
         return (
-            <main className="container">
-                {
-                    needsToFetch(this.props.products)
-                        ? <CircularProgress color="secondary"/>
-                        : <Grid container spacing={24}>
-                            {
-                                this.generateCatalogueProducts(this.props.products.payload)
-                            }
-                        </Grid>
-                }
-            </main>
+            <div>
+                <div className="bread-crumbs">
+                    <Typography
+                        children="КАТАЛОГ ПРОДУКЦИИ → "
+                    />
+                </div>
+                <main className="container">
+                    {
+                        needsToFetch(this.props.products)
+                            ? <CircularProgress color="secondary"/>
+                            : <Grid container spacing={24}>
+                                {
+                                    this.generateCatalogueProducts(this.props.products.payload)
+                                }
+                            </Grid>
+                    }
+                </main>
+            </div>
         );
     }
 }

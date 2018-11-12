@@ -1,5 +1,15 @@
 body {
   margin: 0;
+  height: 100%;
+}
+html {
+  height: 100%;
+}
+#app {
+  min-height: calc(100vh - 80px);
+}
+.main-content {
+  height: 100%;
 }
 .top-bar-navigation {
   header {

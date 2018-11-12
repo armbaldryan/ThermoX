@@ -1,13 +1,77 @@
 .catalogue-card-box {
   margin-bottom: 20px;
-  .card-header {
-    height: 200px;
+  .container {
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    > div {
+      width: 100%;
+      margin: 0;
+    }
     .card-image {
-      height: 200px;
+      height: 350px;
       border-radius: 0;
+      width: 185px;
       img {
-        height: 200px;
+        height: 350px;
       }
+    }
+  }
+  .card-title {
+    color: #1d1d1b;
+    font-size: 21px;
+    text-align: center;
+    line-height: 30px;
+  }
+  .card-serial-number {
+    color: #b2b2b2;
+    text-align: center;
+  }
+  .product-sizes {
+    .circle {
+      width: 36px;
+      height: 36px;
+      background: #818181;
+      border-radius: 50%;
+      line-height: 36px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 12px;
+      margin-top: 5px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+    .selected {
+      background-color: #ffc20e;
+    }
+  }
+  .product-colors {
+    margin-top: 10px;
+    .square {
+      cursor: pointer;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+      color: rgba(0, 0, 0, 0);
+      display: inline-block;
+      font-size: 0;
+      height: 24px;
+      line-height: 18px;
+      margin: 0 3px;
+      position: relative;
+      padding: 0 !important;
+      width: 24px;
+    }
+    .selected:after {
+      background-color: #ffc20e;
+      content: "";
+      display: block;
+      height: 4px;
+      width: 30px;
+      left: 50%;
+      margin-left: -15px;
+      position: absolute;
+      bottom: -6px;
     }
   }
 }

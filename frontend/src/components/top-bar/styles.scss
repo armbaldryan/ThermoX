@@ -13,7 +13,9 @@
   }
   .menu-items {
     min-height: 64px;
+    width: 100%;
     h6 {
+      font-size: 14px;
       height: 64px;
       a {
         padding: 0 20px;
@@ -22,9 +24,12 @@
         height: 64px;
         color: white;
         text-decoration: none;
-        &:hover {
-          background: rgba(30, 30, 0, .8);
-        }
+      }
+    }
+    #list-menu {
+      a {
+        padding: 0;
+        height: 32px;
       }
     }
   }

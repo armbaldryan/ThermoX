@@ -1,14 +1,17 @@
 import React, { PureComponent } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from './components/home';
 import Catalogue from './components/catalogue';
 import TopBar from './components/top-bar';
+import ErrorComp from './components/error-comp';
+import Footer from './components/footer';
+import Category from './components/catalogue/category';
 import "./styles.scss";
 
-export default class App extends PureComponent{
+class App extends PureComponent{
     render() {
         return (
-            <div>
+            <div className="main-content">
                 <TopBar/>
                 <main>
                     <Switch>
@@ -22,9 +25,20 @@ export default class App extends PureComponent{
                             path="/catalogue"
                             component={Catalogue}
                         />
+                        <Route
+                            exact
+                            path="/catalogue/:category"
+                            component={Category}
+                        />
+                        <Route
+                            component={ErrorComp}
+                        />
                     </Switch>
                 </main>
+                <Footer/>
             </div>
         );
     }
 }
+
+export default withRouter(App);

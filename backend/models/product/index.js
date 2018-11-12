@@ -18,6 +18,10 @@ const Product = new Schema({
         type: String,
         required: true,
     },
+    qualities: [{
+        type: String,
+        required: true,
+    }],
     features: [{
         size: {
             type: Number,
@@ -28,11 +32,26 @@ const Product = new Schema({
                 type: Number,
                 required: true,
             },
-            image: {
+            mainImage: {
                 type: String,
                 required: true,
             },
+            images: [{
+                type: String,
+            }],
+            weight: {
+                type: Number,
+                required: true,
+            },
             color: {
+                type: String,
+                required: true,
+            },
+            live: {
+                type: String,
+                required: true,
+            },
+            dimensions: {
                 type: String,
                 required: true,
             }
