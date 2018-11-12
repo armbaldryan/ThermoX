@@ -58,15 +58,13 @@ export default class TopBar extends React.Component {
     };
 
     leaveMenu = (event) => {
-        console.log('event.rela :::', event.relatedTarget);
-        if (event.relatedTarget === null || !event.relatedTarget.closest('menu-catalogue')) {
+        if (event.relatedTarget.toString().slice(1, 7) === 'object' || !event.relatedTarget.closest('#menu-catalogue')) {
             this.setState({ isSubMenuOpen: false });
         }
     };
 
     render() {
         const { auth, anchorEl, catalogueAnchorEl } = this.state;
-        console.log('this.state :::', this.state);
         const open = Boolean(anchorEl);
         const isMobileFunc = isMobile();
         return (
