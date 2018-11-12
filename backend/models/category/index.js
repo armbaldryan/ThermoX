@@ -7,6 +7,11 @@ const Category = new Schema({
         type: String,
         required: true,
     },
+    slug: {
+        type: String,
+        required: true,
+        unique: true,
+    }
 });
 
 exports.category = mongoose.model('category', Category);

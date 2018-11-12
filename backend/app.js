@@ -25,7 +25,8 @@ app.use(cors());
 require('./routes')(app);
 
 // const category = new Category({
-//     title: 'Арктика',
+//     title: 'ThermoX',
+//     slug: 'thermox',
 // });
 //
 // category.save()

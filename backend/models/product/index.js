@@ -3,7 +3,7 @@ const mongoose = require('../../libs/mongoose.js');
 const { Schema } = mongoose;
 
 const Product = new Schema({
-    categoryID: {
+    categoryName: {
         type: String,
         required: true,
     },

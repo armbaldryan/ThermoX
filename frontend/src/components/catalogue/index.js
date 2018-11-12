@@ -4,10 +4,9 @@ import { fetchProducts } from '../../actions/products/index';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { needsToFetch } from '../../helpers';
 import SingleProduct from '../list-items/product';
-import './styles.scss';
 import Typography from '@material-ui/core/Typography';
-
 import Grid from '@material-ui/core/Grid';
+import './styles.scss';
 
 const mapStateToProps = (state) => ({
     products: state.products,
