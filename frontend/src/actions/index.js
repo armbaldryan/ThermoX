@@ -1,13 +1,13 @@
 export const fetchDataInProgress = (suffix) => ({
-    type: `FETCH_${suffix}_IN_PROGRESS`
+    type: `REQUEST_${suffix}`
 });
 
 export const fetchDataSuccess = (data, suffix) => ({
-    type: `FETCH_${suffix}_SUCCESS`,
+    type: `RECEIVE_${suffix}`,
     payload: data
 });
 
 export const fetchDataFailure = (error, suffix) => ({
-    type: `FETCH_${suffix}_FAILURE`,
+    type: `FAIL_${suffix}`,
     payload: { error }
 });

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
-import { fetchProducts } from '../../actions/products/index';
+import { fetchProducts } from '../../reducers/products/index';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { needsToFetch } from '../../helpers';
 import SingleProduct from '../list-items/product';

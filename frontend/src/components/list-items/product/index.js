@@ -48,7 +48,6 @@ export default class SingleProduct extends PureComponent{
     };
 
     render() {
-        console.log('this.state :::', this.state);
         return (
             <Grid
                 item

@@ -58,8 +58,7 @@ export default class TopBar extends React.Component {
     };
 
     leaveMenu = (event) => {
-        const { relatedTarget } = event;
-        if (!relatedTarget || !relatedTarget.closest('#menu-catalogue')) {
+        if (event.relatedTarget.toString().slice(1, 7) === 'object' || !event.relatedTarget.closest('#menu-catalogue')) {
             this.setState({ isSubMenuOpen: false });
         }
     };
@@ -152,27 +151,3 @@ export default class TopBar extends React.Component {
 
 TopBar.propTypes = {
 };
-
-
-{/*<Menu*/}
-    {/*anchorOrigin={{*/}
-        {/*vertical: 'bottom',*/}
-        {/*horizontal: 'left',*/}
-    {/*}}*/}
-    {/*getContentAnchorEl={null}*/}
-    {/*className="drop-down-menu"*/}
-    {/*id="simple-menu"*/}
-    {/*anchorEl={catalogueAnchorEl}*/}
-    {/*open={!!catalogueAnchorEl}*/}
-    {/*onClose={this.handleClose}*/}
-{/*>*/}
-    {/*<MenuItem>*/}
-        {/*<NavLink to="/catalogue/thermox">ThermoX</NavLink>*/}
-    {/*</MenuItem>*/}
-    {/*<MenuItem>*/}
-        {/*<NavLink to="/catalogue/arktika">Арктика</NavLink>*/}
-    {/*</MenuItem>*/}
-    {/*<MenuItem>*/}
-        {/*<NavLink exact to="/catalogue">Все Термосы</NavLink>*/}
-    {/*</MenuItem>*/}
-{/*</Menu>*/}

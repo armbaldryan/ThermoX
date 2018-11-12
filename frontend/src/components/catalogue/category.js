@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
-import { fetchProductsBySlug } from '../../actions/product/index';
+import { fetchProductsBySlug } from '../../reducers/product/index';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { needsToFetch } from '../../helpers';
 import SingleProduct from '../list-items/product';
@@ -18,7 +18,6 @@ const mapDispatchToProps = {
 class Category extends PureComponent{
 
     componentDidMount() {
-        console.log('this.props :::', this.props);
         this.props.fetchProductsBySlug(this.props.match.params.category);
     }
 
