@@ -11,3 +11,70 @@
       color: #2196f3;
     }
 }
+.container {
+  .product-left-paper {
+
+  }
+  .product-right-paper {
+    .product-title {
+      color: #818181;
+      line-height: 22px;
+      text-transform: uppercase;
+    }
+    .product-serial-number {
+      color: #2196f3;
+    }
+    .product-size {
+      margin-top: 1rem;
+    }
+    .product-sizes {
+      flex-direction: column;
+      .circle {
+        width: 36px;
+        height: 36px;
+        background: #818181;
+        border-radius: 50%;
+        line-height: 36px;
+        text-align: center;
+        color: #ffffff;
+        font-size: 12px;
+        margin-top: 5px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      .selected {
+        background-color: #ffc20e;
+      }
+    }
+    .product-colors {
+      flex-direction: column;
+      margin-top: 10px;
+      .square {
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+        color: rgba(0, 0, 0, 0);
+        display: inline-block;
+        font-size: 0;
+        height: 24px;
+        line-height: 18px;
+        margin: 0 3px;
+        position: relative;
+        padding: 0 !important;
+        width: 24px;
+      }
+      .selected:after {
+        background-color: #ffc20e;
+        content: "";
+        display: block;
+        height: 4px;
+        width: 30px;
+        left: 50%;
+        margin-left: -15px;
+        position: absolute;
+        bottom: -6px;
+      }
+    }
+  }
+}

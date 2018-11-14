@@ -1,10 +1,10 @@
 import { createGetData } from "../../actions/helpers";
 import { createGetReducer } from "../../helpers";
 
-export const fetchProductsBySlug = (slug) => createGetData({
-    suffix: 'PRODUCTS_BY_SLUG',
+export const fetchSingleProductById = (slug, id) => createGetData({
+    suffix: 'PRODUCT_BY_ID',
     apiCall: '/api/catalogue',
-    apiCallArgs: slug
+    apiCallArgs: [ slug, id ]
 })();
 
-export default createGetReducer('PRODUCTS_BY_SLUG');
+export default createGetReducer('PRODUCT_BY_ID');

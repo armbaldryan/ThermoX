@@ -89,7 +89,7 @@ export default class TopBar extends React.Component {
                                 onMouseEnter={this.enterMenu}
                                 onMouseLeave={this.leaveMenu}
                             >
-                                <NavLink to="/catalogue">Каталог</NavLink>
+                                <NavLink to="/catalogue">Каталог продукции</NavLink>
                                 <Collapse in={this.state.isSubMenuOpen}>
                                     {this.menuList}
                                 </Collapse>

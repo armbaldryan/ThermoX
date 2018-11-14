@@ -6,6 +6,7 @@ import { needsToFetch } from '../../helpers';
 import SingleProduct from '../list-items/product';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 const mapStateToProps = (state) => ({
@@ -16,15 +17,20 @@ const mapDispatchToProps = {
     fetchProducts
 };
 class Catalogue extends PureComponent{
-    
+    static contextTypes = {
+        router: PropTypes.object,
+    };
     componentDidMount() {
         this.props.fetchProducts();
     }
 
     generateCatalogueProducts = (products) => products.map((product) => <SingleProduct
+        onClick={this.clickHandler}
         key={product._id}
         product={product}
     />);
+
+    clickHandler = (product) => this.context.router.history.push(`/catalogue/${product.categoryName}/${product._id}`);
 
     render() {
         return (

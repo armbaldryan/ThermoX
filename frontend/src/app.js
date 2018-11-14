@@ -5,7 +5,9 @@ import Catalogue from './components/catalogue';
 import TopBar from './components/top-bar';
 import ErrorComp from './components/error-comp';
 import Footer from './components/footer';
-import Category from './components/catalogue/category';
+import Category from './components/catalogue/category/';
+import Product from './components/catalogue/product';
+
 import "./styles.scss";
 
 class App extends PureComponent{
@@ -29,6 +31,11 @@ class App extends PureComponent{
                             exact
                             path="/catalogue/:category"
                             component={Category}
+                        />
+                        <Route
+                            exact
+                            path="/catalogue/:category/:id"
+                            component={Product}
                         />
                         <Route
                             component={ErrorComp}

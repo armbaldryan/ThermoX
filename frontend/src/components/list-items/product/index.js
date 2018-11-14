@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import classNames from 'classnames';
 import './styles.scss';
+
 export default class SingleProduct extends PureComponent{
 
     constructor(props) {
@@ -47,7 +48,13 @@ export default class SingleProduct extends PureComponent{
         })
     };
 
+    clickHandler = () => {
+        console.log('this.props :::', this.props);
+        this.props.onClick(this.props.product);
+    };
+    
     render() {
+        console.log('this.props :::', this.props);
         return (
             <Grid
                 item
@@ -57,16 +64,23 @@ export default class SingleProduct extends PureComponent{
                 <div className="catalogue-card-box">
                     <Grid className="container justify-xs-center">
                         <Avatar
+                            onClick={this.clickHandler}
                             aria-label="Recipe"
                             image={this.state.property.mainImage}
                             src={this.state.property.mainImage}
                             className="card-image"
                         />
                     </Grid>
-                    <Typography className="card-title">
+                    <Typography
+                        className="card-title"
+                        onClick={this.clickHandler}
+                    >
                         {this.props.product.title}
                     </Typography>
-                    <Typography className="card-serial-number">
+                    <Typography
+                        className="card-serial-number"
+                        onClick={this.clickHandler}
+                    >
                         {`Серия ${this.props.product.serialNumber}`}
                     </Typography>
                     <CardContent>

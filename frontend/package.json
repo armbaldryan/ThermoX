@@ -16,6 +16,7 @@
     "babel": "^6.23.0",
     "classnames": "^2.2.6",
     "flow": "^0.2.3",
+    "guid": "0.0.12",
     "is-mobile": "^2.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.1",
@@ -25,7 +26,8 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.5",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",

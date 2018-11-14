@@ -9,6 +9,7 @@
       margin: 0;
     }
     .card-image {
+      cursor: pointer;
       height: 350px;
       border-radius: 0;
       width: 185px;
@@ -18,12 +19,14 @@
     }
   }
   .card-title {
+    cursor: pointer;
     color: #1d1d1b;
     font-size: 21px;
     text-align: center;
     line-height: 30px;
   }
   .card-serial-number {
+    cursor: pointer;
     color: #b2b2b2;
     text-align: center;
   }
